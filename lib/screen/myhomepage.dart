@@ -15,7 +15,7 @@ class Myhomepage extends StatefulWidget {
 class _MyhomepageState extends State<Myhomepage> {
   firebase_storage.FirebaseStorage storage =
       firebase_storage.FirebaseStorage.instance;
-      PDFDocument? doc;
+  PDFDocument? doc;
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +28,14 @@ class _MyhomepageState extends State<Myhomepage> {
                 File file = File(path!);
                 firebase_storage.UploadTask? task = await uploadfile(file);
               },
-              child: const Text("pick up pdf")),
+              child: const Text("pick up PDF")),
           ElevatedButton(
               onPressed: () async {
                 await downloadURLExample();
                 Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => viewPDF(doc!)),
-    );
+                  context,
+                  MaterialPageRoute(builder: (context) => viewPDF(doc!)),
+                );
               },
               child: const Text("view pdf"))
         ]),
@@ -64,8 +64,7 @@ class _MyhomepageState extends State<Myhomepage> {
         .ref('files/some-file.pdf')
         .getDownloadURL();
     PDFDocument doc1 = await PDFDocument.fromURL(downloadURL);
-    doc=doc1;
-    
+    doc = doc1;
   }
 }
 
